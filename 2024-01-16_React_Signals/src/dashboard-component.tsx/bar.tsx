@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Bar as BarPlot } from "react-chartjs-2";
 import { fetchBarPoints } from "./utils";
+import { increment } from "../store";
 
 export function Bar() {
   // adding dataset state
@@ -12,10 +13,13 @@ export function Bar() {
     const timer = setTimeout(() => {
       fetchBarPoints().then((newDataset) => {
         setDataset(newDataset);
+        increment();
       });
     }, delay);
 
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(timer);
+    }
   });
 
   return (

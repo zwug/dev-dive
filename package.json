@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@preact/signals": "^1.2.2"
+  },
+  "devDependencies": {
+    "@preact/signals-react": "^2.0.0"
+  }
+}

@@ -1,4 +1,6 @@
 import { styled } from "styled-components";
+import { makeUnstuck, updatesCount } from "./store";
+import { useSignals } from "@preact/signals-react/runtime";
 
 const Container = styled.nav`
   position: relative;
@@ -24,13 +26,17 @@ const Stats = styled.div`
 `;
 
 export function Nav() {
+  useSignals();
+  console.log('rerender');
+  
   return (
     <Container>
       <h1>DevDive!</h1>
 
       <Stats>
-        <button>Unstick</button>
-        <span>Updates per minute: ???</span>
+        <button onClick={makeUnstuck}>Unstick</button>
+        <span>Updates per minute:</span>
+        <>{updatesCount.value.length}</>
       </Stats>
     </Container>
   );

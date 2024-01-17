@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Pie as PiePlot } from "react-chartjs-2";
 import { fetchPiePoints } from "./utils";
+import { increment } from "../store";
 
 export function Pie() {
   // adding dataset state
@@ -13,6 +14,7 @@ export function Pie() {
       // recreating a random dataset
       fetchPiePoints().then((newDataset) => {
         setDataset(newDataset);
+        increment();
       });
     }, delay);
 

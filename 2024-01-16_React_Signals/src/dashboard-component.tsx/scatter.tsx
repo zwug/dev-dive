@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Scatter as ScatterPlot } from "react-chartjs-2";
 import { fetchScatterPoints } from "./utils";
+import { increment } from "../store";
 
 export function Scatter() {
   // adding dataset state
@@ -18,6 +19,7 @@ export function Scatter() {
       // recreating a random dataset
       fetchScatterPoints().then((newDataset) => {
         setDataset(newDataset);
+        increment();
       });
     }, delay);
 
